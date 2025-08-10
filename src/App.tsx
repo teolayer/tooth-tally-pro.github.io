@@ -8,6 +8,7 @@ import { Layout } from "@/components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Schedule from "./pages/Schedule";
 import Patients from "./pages/Patients";
+import NewPatient from "./pages/NewPatient";
 import Administration from "./pages/Administration";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -26,7 +27,7 @@ const App = () => (
             <Route path="/" element={<Layout><Dashboard /></Layout>} />
             <Route path="/schedule" element={<Layout><Schedule /></Layout>} />
             <Route path="/patients" element={<Layout><Patients /></Layout>} />
-            <Route path="/patients/new" element={<Layout><Patients /></Layout>} />
+            <Route path="/patients/new" element={<Layout><NewPatient /></Layout>} />
             <Route path="/patients/search" element={<Layout><Patients /></Layout>} />
             <Route path="/administration" element={<Layout><Administration /></Layout>} />
             <Route path="/finances" element={<Layout><Administration /></Layout>} />

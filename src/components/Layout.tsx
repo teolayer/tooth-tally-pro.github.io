@@ -2,8 +2,9 @@ import { useState } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Menu, Sun, Moon } from "lucide-react";
+import { Menu, Sun, Moon, UserPlus } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useNavigate } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,9 +12,14 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const handleNewPatient = () => {
+    navigate("/patients/new");
   };
 
   return (
@@ -34,13 +40,23 @@ export function Layout({ children }: LayoutProps) {
               </div>
             </div>
             
-            <button 
-              onClick={toggleTheme}
-              className="bg-white/20 text-primary-foreground p-2 rounded-lg hover:bg-white/30 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={handleNewPatient}
+                className="bg-accent text-accent-foreground px-4 py-2 rounded-lg font-medium hover:bg-accent/90 transition-colors flex items-center gap-2"
+              >
+                <UserPlus className="h-4 w-4" />
+                Nuevo Paciente
+              </button>
+              
+              <button 
+                onClick={toggleTheme}
+                className="bg-white/20 text-primary-foreground p-2 rounded-lg hover:bg-white/30 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+            </div>
           </header>
 
           <main className="flex-1 p-6">
